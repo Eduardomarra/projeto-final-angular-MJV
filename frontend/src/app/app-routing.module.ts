@@ -6,14 +6,15 @@ import { GamesComponent } from './features/games/pages/games/games.component';
 import { HomeComponent } from './features/home/pages/home/home.component';
 import { LoginComponent } from './features/login/pages/login/login.component';
 import { SeriesComponent } from './features/series/pages/series/series.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'series', component: SeriesComponent },
-  { path: 'filmes', component: FilmesComponent },
-  { path: 'animes', component: AnimesComponent },
-  { path: 'games', component: GamesComponent },
+  { path: 'series', component: SeriesComponent, canActivate: [AuthGuard] },
+  { path: 'filmes', component: FilmesComponent, canActivate: [AuthGuard] },
+  { path: 'animes', component: AnimesComponent, canActivate: [AuthGuard] },
+  { path: 'games', component: GamesComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 ];
 

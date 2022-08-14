@@ -1,1 +1,14 @@
 <app-header></app-header>
+<div class="container">
+  <h1>Entre com sua conta e aproveite ao máximo</h1>
+  <form>
+      <label for="email" class="label-control">E-mail</label>
+      <input type="email" [(ngModel)]="email" id="email" name="email" class="input-control" placeholder="e-mail@gmail.com" required autocomplete="off">
+      <label for="password" class="label-control">Senha</label>
+      <input type="password" [(ngModel)]="senha" id="password" name="password" class="input-control" placeholder="******" required>
+      <p *ngIf="error">Usuário não encontrado.</p>
+      <button type="submit" class="btn-primary" (click)="authenticateByUser()">Entrar</button>
+  </form>
+</div>
+<app-footer></app-footer>
+
