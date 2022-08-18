@@ -10,14 +10,16 @@
   <div class="input__search">
     <input type="search" name="search-animes" id="search-animes"  placeholder="Quer ajuda na procura? Pesquise aqui"/>
   </div>
+  <div class="create-post">
+    <button routerLink="/create">Novo Post</button>
+  </div>
   <div class="cards__animes">
     <div class="card" *ngFor="let n of filmes">
-      <div class="img__card">
+      <div class="img__card" (click)="detalhesFilme(n.id)">
         <img src={{n.src}} alt="">
       </div>
       <p>{{n.description}}</p>
     </div>
-
   </div>
 </div>
 <app-footer></app-footer>

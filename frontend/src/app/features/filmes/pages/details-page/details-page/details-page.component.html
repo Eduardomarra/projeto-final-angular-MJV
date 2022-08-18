@@ -1,0 +1,11 @@
+<app-header></app-header>
+<div class="container">
+  <div class="card" *ngIf="categorie">
+    <div class="img__card">
+      <img src={{categorie.src}} alt="">
+    </div>
+    <p>{{categorie.description}}</p>
+  </div>
+</div>
+<app-footer></app-footer>
+

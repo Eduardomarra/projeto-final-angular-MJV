@@ -13,7 +13,13 @@
       </ul>
     </div>
     <div>
-      <a routerLink="/login" class="header-login">Login</a>
+      <a *ngIf="!user" routerLink="/login" class="header-login">Login</a>
+    </div>
+    <div>
+      <a *ngIf="!user" routerLink="/register" class="header-login">Cadastrar</a>
+    </div>
+    <div>
+      <a *ngIf="user" (click)="exitSession()" routerLink="/login" class="header-login">Sair</a>
     </div>
   </div>
 </div>

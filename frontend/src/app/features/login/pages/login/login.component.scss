@@ -7,16 +7,7 @@
   max-width: 1100px;
   width: 100%;
   height: calc(100vh - 300px);
-  margin: 0 auto;
-  padding: 100px 0;
-
-
-  h1 {
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 60px;
-    color: #FEFBFB;
-  }
+  margin: 100px auto 0 auto;
 
   form {
     display: flex;
@@ -28,6 +19,14 @@
     background: rgba(130, 87, 230, 0.1);
     border-radius: 10px;
     margin-top: 20px;
+
+    h3 {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 20px;
+      color: #FEFBFB;
+      margin-bottom: 30px;
+    }
 
     .label-control {
       font-weight: 400;
@@ -73,19 +72,18 @@
       color: #b85353;
     }
 
-    button {
-      width: 100%;
-      height: 50px;
-      font-weight: 600;
-      font-size: 18px;
-      line-height: 20px;
-      letter-spacing: 1px;
-      color: #FEFBFB;
-      background: #8257E6;
-      border-radius: 3px;
-      border: none;
-      margin-top: 5px;
-      cursor: pointer;
-    }
+      button {
+        width: 100%;
+        height: 50px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 20px;
+        letter-spacing: 1px;
+        color: #FEFBFB;
+        background: #8257E6;
+        border-radius: 3px;
+        border: none;
+        cursor: pointer;
+      }
   }
 }
