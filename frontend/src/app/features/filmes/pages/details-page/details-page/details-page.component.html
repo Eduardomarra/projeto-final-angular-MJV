@@ -1,11 +1,34 @@
 <app-header></app-header>
-<div class="container">
-  <div class="card" *ngIf="categorie">
-    <div class="img__card">
-      <img src={{categorie.src}} alt="">
+<div class="container" *ngIf="categorie">
+  <div class="card__details" >
+    <div class="card" >
+      <div class="img__card">
+        <img src={{categorie.src}} alt="">
+      </div>
+      <p>{{categorie.description}}</p>
     </div>
-    <p>{{categorie.description}}</p>
+    <div class="btn__details">
+      <button class="btn-details-edit" (click)="editFilme(categorie.id, categorie.description, categorie.src)">Editar</button>
+      <button class="btn-details-delete" (click)="delete(categorie.id)">Excluir</button>
+    </div>
   </div>
+  <form class="register-form" [formGroup]="formFilme" *ngIf="isEdit">
+    <div class="form-field">
+        <label class="label-input">Descrição do filme:</label>
+        <input type="text" formControlName="description" placeholder="Digite a descrição">
+    </div>
+    <div class="form-field">
+        <label class="label-input">Imagem do produto:</label>
+        <input type="text" formControlName="src" placeholder="Digite a url">
+    </div>
+    <div class="action-form">
+        <button
+        class="cadastrarProduto"
+        type="submit"
+        (click)="saveEdit(categorie.id)"
+        [disabled]="formFilme.invalid">Salvar</button>
+    </div>
+</form>
 </div>
 <app-footer></app-footer>
 

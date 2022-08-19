@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Categorie } from 'src/app/shared/model/categorie.modal';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 
@@ -9,11 +10,18 @@ import { CategoriesService } from 'src/app/shared/services/categories.service';
 })
 export class DetailsPageComponent implements OnInit {
 
-  categorie?: Categorie
+  categorie?: Categorie;
+  isEdit = false
+
+  formFilme = new FormGroup({
+    description: new FormControl("", [Validators.required]),
+    src: new FormControl("",[Validators.required])
+  });
 
   constructor(
     private activedRoute: ActivatedRoute,
-    private categoriesService: CategoriesService
+    private categoriesService: CategoriesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,5 +32,28 @@ export class DetailsPageComponent implements OnInit {
       });
     });
   }
+
+  saveEdit(idFilme: number) {
+    this.categoriesService.update({id: idFilme}, this.formFilme.value).subscribe((res) => {
+      alert('Filme alterado com sucesso!');
+      this.router.navigate(['/filmes']);
+    })
+  }
+
+  delete( idFilme: number ) {
+    this.categoriesService.remove(idFilme).subscribe((res) => {
+      alert('Filme removido com sucesso!');
+      this.router.navigate(['/filmes']);
+    }
+    );
+  }
+
+  editFilme(id: number, description: string, src: string) {
+    this.isEdit = true;
+    this.formFilme.controls['description'].setValue(description);
+    this.formFilme.controls['src'].setValue(src);
+  }
+
+
 
 }
