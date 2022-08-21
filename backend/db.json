@@ -151,9 +151,9 @@
   ],
   "series": [
     {
-      "id": 1,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.TTTTTTT",
       "src": "../../../../../assets/images/series/breaking.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
+      "id": 1
     },
     {
       "id": 2,
@@ -203,9 +203,9 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
     },
     {
-      "id": 2,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.aaaaaa",
       "src": "../../../../../assets/images/animes/goku.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
+      "id": 2
     },
     {
       "id": 3,
@@ -255,9 +255,9 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
     },
     {
-      "id": 3,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.AAAAAAA",
       "src": "../../../../../assets/images/games/ghost.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
+      "id": 3
     },
     {
       "id": 4,

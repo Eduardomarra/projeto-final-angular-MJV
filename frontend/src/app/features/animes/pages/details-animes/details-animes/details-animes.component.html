@@ -12,7 +12,7 @@
       <button class="btn-details-delete" (click)="delete(categorie.id)">Excluir</button>
     </div>
   </div>
-  <form class="register-form" [formGroup]="formFilme" *ngIf="isEdit">
+  <form class="register-form" [formGroup]="formAnimes" *ngIf="isEdit">
     <div class="form-field">
         <label class="label-input">Descrição do filme:</label>
         <input type="text" formControlName="description" placeholder="Digite a descrição">
@@ -26,7 +26,7 @@
         class="cadastrarProduto"
         type="submit"
         (click)="saveEdit(categorie.id)"
-        [disabled]="formFilme.invalid">Salvar</button>
+        [disabled]="formAnimes.invalid">Salvar</button>
     </div>
 </form>
 </div>

@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="register-container">
+    <h3>Criação de post de filmes</h3>
+    <form class="register-form" [formGroup]="formGames">
+        <div class="form-field">
+            <label class="label-input">Descrição do filme:</label>
+            <input type="text" formControlName="description" placeholder="Digite a descrição">
+        </div>
+        <div class="form-field">
+            <label class="label-input">Imagem do produto:</label>
+            <input type="text" formControlName="src" placeholder="Digite a url">
+        </div>
+        <div class="action-form">
+            <button
+            class="cadastrarProduto"
+            type="submit"
+            (click)="onSubmit()"
+            [disabled]="formGames.invalid">Salvar</button>
+        </div>
+    </form>
+</div>
+<app-footer></app-footer>
+

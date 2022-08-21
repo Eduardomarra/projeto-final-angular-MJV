@@ -44,16 +44,12 @@ export class DetailsPageComponent implements OnInit {
     this.categoriesService.remove(idFilme).subscribe((res) => {
       alert('Filme removido com sucesso!');
       this.router.navigate(['/filmes']);
-    }
-    );
+    });
   }
 
-  editFilme(id: number, description: string, src: string) {
+  editFilme(description: string, src: string) {
     this.isEdit = true;
     this.formFilme.controls['description'].setValue(description);
     this.formFilme.controls['src'].setValue(src);
   }
-
-
-
 }

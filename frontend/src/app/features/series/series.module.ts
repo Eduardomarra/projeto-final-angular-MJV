@@ -2,16 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SeriesComponent } from './pages/series/series.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { DetailsSeriesComponent } from './pages/details-series/details-series/details-series.component';
+import { CreateSeriesComponent } from './pages/create-series/create-series/create-series.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
 
 
 
 @NgModule({
   declarations: [
-    SeriesComponent
+    SeriesComponent,
+    DetailsSeriesComponent,
+    CreateSeriesComponent
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
+    RouterModule
   ]
 })
 export class SeriesModule { }
