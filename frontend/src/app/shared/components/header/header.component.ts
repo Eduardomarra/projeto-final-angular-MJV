@@ -26,4 +26,11 @@ export class HeaderComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  openMenuMobile() {
+    const menuMobile = document.querySelector('.header-menu');
+    const btnLogin = document.querySelector('.header__btn');
+    menuMobile?.classList.toggle('active')
+    btnLogin?.classList.toggle('active')
+  }
+
 }
