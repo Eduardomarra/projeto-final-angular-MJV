@@ -10,7 +10,7 @@
   <div class="input__search">
     <input type="search" name="search-animes" id="search-animes"  placeholder="Quer ajuda na procura? Pesquise aqui"/>
   </div>
-  <div class="create-post">
+  <div class="create-post" *ngIf="user?.adm">
     <button routerLink="/create-games">Novo Post</button>
   </div>
   <div class="cards__animes">

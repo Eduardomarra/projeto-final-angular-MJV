@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { SeriesService } from 'src/app/shared/services/series.service';
 
 @Component({
   templateUrl: './create-series.component.html',
@@ -16,7 +15,7 @@ export class CreateSeriesComponent implements OnInit {
   });
 
   constructor(
-    private seriesService: SeriesService,
+    private categoriesService: CategoriesService,
     private router: Router
     ) { }
 
@@ -26,7 +25,7 @@ export class CreateSeriesComponent implements OnInit {
   onSubmit() {
     const formValue = this.formSeries.value;
 
-    this.seriesService.createNewPost(formValue).subscribe((res) => {
+    this.categoriesService.createNewPost(formValue, "series").subscribe((res) => {
       this.router.navigate(['/series'])
     })
   }

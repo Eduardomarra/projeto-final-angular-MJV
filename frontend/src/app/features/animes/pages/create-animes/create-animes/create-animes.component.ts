@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AnimesService } from 'src/app/shared/services/animes.service';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class CreateAnimesComponent implements OnInit {
   });
 
   constructor(
-    private animesService: AnimesService,
+    private categoriesService: CategoriesService,
     private router: Router
     ) { }
 
@@ -26,7 +25,7 @@ export class CreateAnimesComponent implements OnInit {
   onSubmit() {
     const formValue = this.formAnime.value;
 
-    this.animesService.createNewPost(formValue).subscribe((res) => {
+    this.categoriesService.createNewPost(formValue, "animes").subscribe((res) => {
       this.router.navigate(['/animes'])
     })
   }

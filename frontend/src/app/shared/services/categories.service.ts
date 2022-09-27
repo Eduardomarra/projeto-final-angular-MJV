@@ -17,23 +17,23 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getFilmes() {
-    return this.http.get<Array<Categorie>>(this.baseUrl + "/filmes")
+  getcategories(categories: string) {
+    return this.http.get<Array<Categorie>>(this.baseUrl + categories)
   }
 
-  getById(id: number) {
-    return this.http.get<Categorie>(this.baseUrl + `/filmes/${id}`, this.options);
+  getById(id: number, categories: string){
+    return this.http.get<Categorie>(this.baseUrl + `/${categories}/${id}`, this.options);
   }
 
-  createNewPost(categorie: any) {
-    return this.http.post(this.baseUrl + '/filmes', categorie, this.options);
+  createNewPost(categorie: any, categories: string) {
+    return this.http.post(this.baseUrl + `/${categories}`, categorie, this.options);
   }
 
-  remove(id: number) {
-    return this.http.delete(this.baseUrl + '/filmes/' + id, this.options);
+  remove(id: number, categories: string) {
+    return this.http.delete(this.baseUrl + categories + id, this.options);
   }
 
-  update(categorie: Partial<Categorie>, categorieEdit: any) {
-    return this.http.put<Categorie>(this.baseUrl + '/filmes/' + categorie.id, categorieEdit, this.options);
+  update(categorie: Partial<Categorie>, categorieEdit: any, categories: string) {
+    return this.http.put<Categorie>(this.baseUrl + categories + categorie.id, categorieEdit, this.options);
   }
 }

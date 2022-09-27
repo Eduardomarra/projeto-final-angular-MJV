@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categorie } from 'src/app/shared/model/categorie.modal';
-import { GamesService } from 'src/app/shared/services/games.service';
+import { User } from 'src/app/shared/model/user.model';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
   templateUrl: './games.component.html',
@@ -13,16 +14,22 @@ export class GamesComponent implements OnInit {
   description = 'O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos relacionados.'
 
   games: Categorie[] = [];
+  user?: User
 
   constructor(
-    private gamesService: GamesService,
+    private categoriesService: CategoriesService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.gamesService.getGames().subscribe((game) => {
+    this.categoriesService.getcategories("/games").subscribe((game) => {
       this.games = game;
     });
+
+    const userSessionStorage = sessionStorage.getItem('user');
+    if (userSessionStorage){
+      this.user = JSON.parse(userSessionStorage);
+    }
   }
 
   detalhesGames(idGame: number) {

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Categorie } from 'src/app/shared/model/categorie.modal';
-import { AnimesService } from 'src/app/shared/services/animes.service';
+import { User } from 'src/app/shared/model/user.model';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
   templateUrl: './details-animes.component.html',
@@ -12,6 +13,7 @@ export class DetailsAnimesComponent implements OnInit {
 
   categorie?: Categorie;
   isEdit = false;
+  user?: User;
 
   formAnimes = new FormGroup({
     description: new FormControl('', [Validators.required]),
@@ -20,30 +22,33 @@ export class DetailsAnimesComponent implements OnInit {
 
   constructor(
     private activedRoute: ActivatedRoute,
-    private animesService: AnimesService,
+    private categoriesService: CategoriesService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params) => {
       const id = parseInt(params['animeId']);
-      this.animesService.getById(id).subscribe((anime) => {
+      this.categoriesService.getById(id, "animes").subscribe((anime) => {
         this.categorie = anime;
       });
     });
+
+    const userSessionStorage = sessionStorage.getItem('user');
+    if (userSessionStorage){
+      this.user = JSON.parse(userSessionStorage);
+    }
   }
 
   saveEdit(idAnime: number) {
-    this.animesService
-      .update({ id: idAnime }, this.formAnimes.value)
-      .subscribe((res) => {
+    this.categoriesService.update({ id: idAnime }, this.formAnimes.value, "/animes/").subscribe((res) => {
         alert('Anime alterado com sucesso!');
         this.router.navigate(['/animes']);
       });
   }
 
   delete(idAnime: number) {
-    this.animesService.remove(idAnime).subscribe((res) => {
+    this.categoriesService.remove(idAnime, "/animes/").subscribe((res) => {
       alert('Anime removido com sucesso!');
       this.router.navigate(['/animes']);
     });

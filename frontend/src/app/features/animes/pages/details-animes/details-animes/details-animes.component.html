@@ -8,8 +8,8 @@
       <p>{{categorie.description}}</p>
     </div>
     <div class="btn__details">
-      <button class="btn-details-edit" (click)="editFilme(categorie.description, categorie.src)">Editar</button>
-      <button class="btn-details-delete" (click)="delete(categorie.id)">Excluir</button>
+      <button class="btn-details-edit" *ngIf="user?.adm" (click)="editFilme(categorie.description, categorie.src)">Editar</button>
+      <button class="btn-details-delete" *ngIf="user?.adm" (click)="delete(categorie.id)">Excluir</button>
     </div>
   </div>
   <form class="register-form" [formGroup]="formAnimes" *ngIf="isEdit">

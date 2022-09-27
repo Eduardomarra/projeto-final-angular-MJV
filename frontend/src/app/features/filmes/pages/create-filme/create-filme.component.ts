@@ -25,7 +25,7 @@ export class CreateFilmeComponent implements OnInit {
   onSubmit() {
     const formValue = this.formFilme.value;
 
-    this.categoriesService.createNewPost(formValue).subscribe((res) => {
+    this.categoriesService.createNewPost(formValue, "filmes").subscribe((res) => {
       this.router.navigate(['/filmes'])
     })
   }

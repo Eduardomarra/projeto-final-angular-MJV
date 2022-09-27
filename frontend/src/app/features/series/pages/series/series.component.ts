@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Categorie } from 'src/app/shared/model/categorie.modal';
-import { SeriesService } from 'src/app/shared/services/series.service';
+import { User } from 'src/app/shared/model/user.model';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
 
 @Component({
   templateUrl: './series.component.html',
@@ -13,16 +14,22 @@ export class SeriesComponent implements OnInit {
   description = 'O Naped pode ser sua fonte de informações sobre o mundo nerd e outros assuntos relacionados.'
 
   series: Categorie[] = []
+  user?: User
 
   constructor(
-    private seriesService: SeriesService,
+    private categoriesService: CategoriesService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.seriesService.getSeries().subscribe((serie) => {
+    this.categoriesService.getcategories("/series").subscribe((serie) => {
       this.series = serie;
     });
+
+    const userSessionStorage = sessionStorage.getItem('user');
+    if (userSessionStorage){
+      this.user = JSON.parse(userSessionStorage);
+    }
   }
 
   detalhesSerie(idSerie: number) {

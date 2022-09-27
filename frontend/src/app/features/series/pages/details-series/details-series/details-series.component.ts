@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Categorie } from 'src/app/shared/model/categorie.modal';
+import { User } from 'src/app/shared/model/user.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { SeriesService } from 'src/app/shared/services/series.service';
 
 @Component({
   templateUrl: './details-series.component.html',
@@ -13,6 +13,7 @@ export class DetailsSeriesComponent implements OnInit {
 
   categorie?: Categorie;
   isEdit = false;
+  user?: User
 
   formSerie = new FormGroup({
     description: new FormControl('', [Validators.required]),
@@ -21,30 +22,33 @@ export class DetailsSeriesComponent implements OnInit {
 
   constructor(
     private activedRoute: ActivatedRoute,
-    private seriesService: SeriesService,
+    private categoriesService: CategoriesService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activedRoute.params.subscribe((params) => {
       const id = parseInt(params['serieId']);
-      this.seriesService.getById(id).subscribe((serie) => {
+      this.categoriesService.getById(id, "series").subscribe((serie) => {
         this.categorie = serie;
       });
     });
+
+    const userSessionStorage = sessionStorage.getItem('user');
+    if (userSessionStorage){
+      this.user = JSON.parse(userSessionStorage);
+    }
   }
 
   saveEdit(idSerie: number) {
-    this.seriesService
-      .update({ id: idSerie }, this.formSerie.value)
-      .subscribe((res) => {
+    this.categoriesService.update({ id: idSerie }, this.formSerie.value, "/series/").subscribe((res) => {
         alert('Serie alterado com sucesso!');
         this.router.navigate(['/series']);
       });
   }
 
   delete(idSerie: number) {
-    this.seriesService.remove(idSerie).subscribe((res) => {
+    this.categoriesService.remove(idSerie, "/series/").subscribe((res) => {
       alert('Serie removido com sucesso!');
       this.router.navigate(['/series']);
     });
