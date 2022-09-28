@@ -8,7 +8,7 @@
       <p>{{description}}</p>
   </div>
   <div class="input__search">
-    <input type="search" name="search-animes" id="search-animes"  placeholder="Quer ajuda na procura? Pesquise aqui"/>
+    <input type="text" [(ngModel)]="pesquisar" (input)="search()" name="search-animes" id="search-animes"  placeholder="Quer ajuda na procura? Pesquise aqui"/>
   </div>
   <div class="create-post" *ngIf="user?.adm">
     <button routerLink="/create-animes">Novo Post</button>

@@ -4,7 +4,7 @@ import { SeriesComponent } from './pages/series/series.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { DetailsSeriesComponent } from './pages/details-series/details-series/details-series.component';
 import { CreateSeriesComponent } from './pages/create-series/create-series/create-series.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 
 
@@ -19,7 +19,8 @@ import { Router, RouterModule } from '@angular/router';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class SeriesModule { }

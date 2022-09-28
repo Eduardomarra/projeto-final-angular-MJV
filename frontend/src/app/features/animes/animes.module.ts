@@ -5,7 +5,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FeaturesModule } from '../features.module';
 import { DetailsAnimesComponent } from './pages/details-animes/details-animes/details-animes.component';
 import { CreateAnimesComponent } from './pages/create-animes/create-animes/create-animes.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 
@@ -21,6 +21,7 @@ import { RouterModule } from '@angular/router';
     FeaturesModule,
     ReactiveFormsModule,
     RouterModule,
+    FormsModule
   ]
 })
 export class AnimesModule { }

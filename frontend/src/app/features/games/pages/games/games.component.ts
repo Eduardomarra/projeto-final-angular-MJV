@@ -16,6 +16,8 @@ export class GamesComponent implements OnInit {
   games: Categorie[] = [];
   user?: User
 
+  pesquisar:string = ""
+
   constructor(
     private categoriesService: CategoriesService,
     private router: Router
@@ -34,6 +36,17 @@ export class GamesComponent implements OnInit {
 
   detalhesGames(idGame: number) {
     this.router.navigateByUrl(`game-details/${idGame}`);
+  }
+
+  search() {
+
+    if(this.pesquisar.length) {
+      this.games = this.games.filter(game => game.description.toLowerCase().includes(this.pesquisar))
+    } else {
+      this.categoriesService.getcategories("/games").subscribe((games) => {
+        this.games = games;
+      });
+    }
   }
 
 }

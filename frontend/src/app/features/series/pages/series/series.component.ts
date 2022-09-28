@@ -16,6 +16,8 @@ export class SeriesComponent implements OnInit {
   series: Categorie[] = []
   user?: User
 
+  pesquisar: string = ""
+
   constructor(
     private categoriesService: CategoriesService,
     private router: Router
@@ -34,6 +36,17 @@ export class SeriesComponent implements OnInit {
 
   detalhesSerie(idSerie: number) {
     this.router.navigateByUrl(`series-details/${idSerie}`);
+  }
+
+  search() {
+
+    if(this.pesquisar.length) {
+      this.series = this.series.filter(serie => serie.description.toLowerCase().includes(this.pesquisar))
+    } else {
+      this.categoriesService.getcategories("/series").subscribe((series) => {
+        this.series = series;
+      });
+    }
   }
 
 }

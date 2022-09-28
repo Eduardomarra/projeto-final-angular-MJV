@@ -15,6 +15,8 @@ export class AnimesComponent implements OnInit {
   animes: Categorie[] = []
   user?: User
 
+  pesquisar: string = ""
+
   constructor(
     private categoriesService: CategoriesService,
     private router: Router
@@ -33,5 +35,16 @@ export class AnimesComponent implements OnInit {
 
   detalhesAnime(idAnime: number) {
     this.router.navigateByUrl(`animes-details/${idAnime}`)
+  }
+
+  search() {
+
+    if(this.pesquisar.length) {
+      this.animes = this.animes.filter(anime => anime.description.toLowerCase().includes(this.pesquisar))
+    } else {
+      this.categoriesService.getcategories("/animes").subscribe((animes) => {
+        this.animes = animes;
+      });
+    }
   }
 }

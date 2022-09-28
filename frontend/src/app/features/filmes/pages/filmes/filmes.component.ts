@@ -16,6 +16,8 @@ export class FilmesComponent implements OnInit {
   filmes: Array<Categorie> = []
   user?: User
 
+  pesquisar: string = ""
+
   constructor(
     private categoriesService: CategoriesService,
     private router: Router
@@ -34,5 +36,16 @@ export class FilmesComponent implements OnInit {
 
   detalhesFilme(idFilme: number) {
     this.router.navigateByUrl(`filmes-details/${idFilme}`);
+  }
+
+  search() {
+
+    if(this.pesquisar.length) {
+      this.filmes = this.filmes.filter(filme => filme.description.toLowerCase().includes(this.pesquisar))
+    } else {
+      this.categoriesService.getcategories("/filmes").subscribe((filmes) => {
+        this.filmes = filmes;
+      });
+    }
   }
 }

@@ -99,9 +99,9 @@
   ],
   "filmes": [
     {
-      "id": 2,
-      "src": "../../../../../assets/images/filmes/batman.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
+      "description": "Batman",
+      "src": "assets/images/filmes/batman.svg",
+      "id": 2
     },
     {
       "id": 3,
@@ -134,9 +134,9 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
     },
     {
-      "id": 9,
+      "description": "Avatar",
       "src": "../../../../../assets/images/filmes/avatar.svg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor."
+      "id": 9
     },
     {
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eros tellus, malesuada et velit in, blandit molestie dolor.",

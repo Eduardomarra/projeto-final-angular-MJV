@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FilmesComponent } from './pages/filmes/filmes.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CreateFilmeComponent } from './pages/create-filme/create-filme.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { DetailsPageComponent } from './pages/details-page/details-page/details-page.component';
 
@@ -17,7 +17,8 @@ import { DetailsPageComponent } from './pages/details-page/details-page/details-
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ]
 })
 export class FilmesModule { }
